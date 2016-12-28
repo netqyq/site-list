@@ -1,16 +1,25 @@
 class SitesController < ApplicationController
   before_action :set_site, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+
+  # load_and_authorize_resource
   # GET /sites
   # GET /sites.json
   def index
-    # @search = Site.search do
-    #   fulltext params[:search]
-    # end
+    # all_sites is record
+    all_sites = Site.where(user_id: current_user.id)
 
-    #puts "-------",@search
-    #@sites = Site.all
-    @sites = Site.where(user_id: current_user.id)
+    if params[:search] == nil
+      @sites = all_sites.page params[:page]
+    else
+      # @search is Sunspot::Search
+      @search = Site.search do
+        fulltext params[:search]
+        with :user_id, current_user.id
+      end
+      @sites = @search.results
+    end
+
   end
 
   # GET /sites/1
@@ -26,6 +35,7 @@ class SitesController < ApplicationController
 
   # GET /sites/1/edit
   def edit
+    authorize! if can? :update, @site
   end
 
   # POST /sites

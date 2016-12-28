@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :sites
   validates :username, uniqueness: true, presence: true
+
+
 end

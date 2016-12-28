@@ -1,20 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Sites</h1>
 
-<%= link_to 'New Site', new_site_path, class: "btn btn-default btn-xs" %>
-<br>
-<br>
-
-<%= form_tag sites_path, :method => :get do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
+<h4>My Sites</h4>
 
 
-<table>
+<div class="parent">
+  
+  <div class="parent-left">
+      <%= link_to 'New Site', new_site_path, class: "btn btn-default btn-xs" %> 
+  </div>
+
+  <div class="parent-right">
+    <%= form_tag sites_path, id: "search-form", :method => :get do%>
+        <%= text_field_tag :search, params[:search], placeholder: 'Search a site' %>
+        <%= submit_tag "Search", :name => nil %>
+    <% end %>
+  </div>
+</div>
+
+
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -32,17 +37,16 @@
         <td><%= link_to site.name, site.url, target: "_blank"  %></td>
         <td><%= site.url %></td>
         <td><%= site.description %></td>
-
         <td><%= site.user.username %></td>
         <td><%= link_to 'Show', site %></td>
-        <% if site.user == current_user %>
-          <td><%= link_to 'Edit', edit_site_path(site) %></td>
-          <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <td><%= link_to 'Edit', edit_site_path(site) %></td>        
+        <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @sites %>
 
 
 

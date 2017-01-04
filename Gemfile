@@ -43,17 +43,17 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'devise', '~> 4.2'
+  gem "rails_best_practices"
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# 2016-11-03
-gem "rails_best_practices"
-
+gem 'devise', '~> 4.2'
 gem 'rucaptcha'
 
+# cache
 gem 'dalli'
 
 # for searching

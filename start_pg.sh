@@ -1,0 +1,2 @@
+cd /data/pgsql
+./start

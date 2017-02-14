@@ -26,4 +26,5 @@ tmp/
 my
 
 solr/development/data/
-rsync_deploy.sh
+deploy.sh
+Gemfile.lock

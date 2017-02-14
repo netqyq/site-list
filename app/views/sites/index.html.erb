@@ -12,7 +12,7 @@
 
   <div class="parent-right">
     <%= form_tag sites_path, id: "search-form", :method => :get do%>
-        <%= text_field_tag :search, params[:search], placeholder: 'Search a site' %>
+        <%= text_field_tag :search, params[:search], placeholder: 'Search a site', required: true %>
         <%= submit_tag "Search", :name => nil %>
     <% end %>
   </div>

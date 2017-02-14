@@ -26,3 +26,4 @@ tmp/
 my
 
 solr/development/data/
+rsync_deploy.sh

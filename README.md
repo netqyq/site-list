@@ -43,4 +43,12 @@ rake db:create
 rake db:migrate
 ```
 
+* Demo
+首页导航
+![mainPage](imgs/mainPage.png)
+个人站点收藏
+![sites](imgs/sites.png)
+
+
+
 

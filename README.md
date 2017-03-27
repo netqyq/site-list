@@ -48,6 +48,7 @@ rake db:migrate
 个人站点收藏
 ![sites](imgs/sites.png)
 
-
+## License
+MIT
 
 
